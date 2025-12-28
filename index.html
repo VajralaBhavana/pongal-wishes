@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Pongal</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("sankranti-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 193, 7, 0.75);
+}
+
+/* Kite Animation */
+.kite {
+    position: absolute;
+    font-size: 30px;
+    animation: fly 12s linear infinite;
+    z-index: 2;
+}
+.kite:nth-child(1) { left: 10%; animation-duration: 14s; }
+.kite:nth-child(2) { left: 50%; animation-duration: 12s; }
+.kite:nth-child(3) { left: 80%; animation-duration: 16s; }
+
+@keyframes fly {
+    from { bottom: -50px; }
+    to { bottom: 110%; }
+}
+
+.container {
+    background: #fff8e1;
+    padding: 30px;
+    border-radius: 20px;
+    width: 340px;
+    text-align: center;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    z-index: 3;
+    position: relative;
+}
+
+/* Logo + College Name */
+.logo {
+    width: 80px;
+    margin-bottom: 5px;
+}
+
+.college-name {
+    font-weight: bold;
+    color: #bf360c;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #e65100;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ff9800;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 15px;
+    background-color: #ff6f00;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e65100;
+}
+
+.wish-box {
+    display: none;
+}
+
+/* Pongal Pot */
+.pot {
+    width: 120px;
+    height: 80px;
+    background: #8d6e63;
+    border-radius: 0 0 60px 60px;
+    margin: 15px auto;
+    position: relative;
+}
+.pot::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 120px;
+    height: 30px;
+    background: #a1887f;
+    border-radius: 60px;
+}
+.pot::after {
+    content: "🔥";
+    position: absolute;
+    bottom: -25px;
+    left: 45px;
+    font-size: 25px;
+}
+
+.quote {
+    font-style: italic;
+    color: #4e342e;
+    margin-top: 10px;
+}
+
+.footer {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #5d4037;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- Kites -->
+<div class="kite">🪁</div>
+<div class="kite">🪁</div>
+<div class="kite">🪁</div>
+
+<!-- Input Page -->
+<div class="container" id="inputBox">
+    <img src="logo.png" class="logo" alt="College Logo">
+    <div class="college-name">KITS Akshar</div>
+
+    <h1>🌾 Makara Sankranti 🌞</h1>
+    <p>Enter Your Name</p>
+
+    <input type="text" id="username" placeholder="Your Name">
+    <br>
+    <button onclick="showWish()">Enter</button>
+</div>
+
+<!-- Wish Page -->
+<div class="container wish-box" id="wishBox">
+    <img src="logo.png" class="logo" alt="College Logo">
+    <div class="college-name">KITS Akshar</div>
+
+    <h1 id="wishText"></h1>
+
+    <div class="pot"></div>
+
+    <p class="quote">
+        🌾 May this Pongal bring prosperity, happiness, and success into your life 🌞
+    </p>
+
+    <p class="quote">
+        🪁 Let your dreams soar high like kites in the sky 🪁
+    </p>
+
+    <div class="footer">
+        -Best wishes from department AIML,DS,&IT
+    </div>
+</div>
+
+<script>
+function showWish() {
+    var name = document.getElementById("username").value.trim();
+    if (name === "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    document.getElementById("inputBox").style.display = "none";
+    document.getElementById("wishBox").style.display = "block";
+
+    document.getElementById("wishText").innerHTML =
+        "🎉 Happy Pongal " + name + "! 🎉";
+}
+</script>
+
+</body>
+</html>
